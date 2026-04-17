@@ -1,7 +1,7 @@
 @if(isCollapsed()){
 <div class="w-12 bg-sidebar flex flex-col">
   <div class="p-3">
-    <button hlmBtn variant="ghost" size="sm" class="cursor-pointer" (click)="toggle()">
+    <button hlmBtn variant="ghost" size="sm" class="cursor-pointer sidebar-toggle" (click)="toggle()">
       <ng-icon hlm size="sm" name="lucideMenu" />
     </button>
   </div>
@@ -11,7 +11,7 @@
   <div class="p-4">
     <div class="flex items-center justify-between mb-4">
       <h1 class="text-xl font-bold">Manual SUNA</h1>
-      <button hlmBtn variant="ghost" size="sm" class="cursor-pointer" (click)="toggle()">
+      <button hlmBtn variant="ghost" size="sm" class="cursor-pointer sidebar-toggle" (click)="toggle()">
         <ng-icon hlm size="sm" name="lucideX" />
       </button>
     </div>
