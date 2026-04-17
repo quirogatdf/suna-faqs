@@ -1,0 +1,43 @@
+<div 
+  class="admin-sidebar"
+  [class.expanded]="isHovered()"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+>
+  <div class="sidebar-collapsed">
+    <div class="flex-1 px-2 flex flex-col gap-1 mt-2">
+      @for (item of menuItems; track item.route) {
+        <a 
+          [routerLink]="item.route"
+          routerLinkActive="bg-primary text-primary-foreground"
+          hlmBtn 
+          variant="ghost" 
+          class="w-full justify-center px-0 py-2"
+        >
+          <ng-icon hlm size="sm" [name]="item.icon" class="icon-default" />
+        </a>
+      }
+    </div>
+  </div>
+  
+  <div class="sidebar-expanded">
+    <div class="p-4">
+      <h1 class="text-xl font-bold">Administración</h1>
+    </div>
+    
+    <div class="flex-1 px-2">
+      @for (item of menuItems; track item.route) {
+        <a 
+          [routerLink]="item.route"
+          routerLinkActive="bg-primary text-primary-foreground"
+          hlmBtn 
+          variant="ghost" 
+          class="w-full justify-start gap-3 px-3 py-2"
+        >
+          <ng-icon hlm size="sm" [name]="item.icon" />
+          <span>{{ item.label }}</span>
+        </a>
+      }
+    </div>
+  </div>
+</div>

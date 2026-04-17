@@ -13,31 +13,28 @@ export class FaqService {
   // FAQ data - hardcoded por ahora, después viene de API
   readonly faqs = signal<FAQ[]>([
     // === ROL DE AGENTE ===
-    {
-      id: 'ag-001',
-      question: '¿Cómo creo un nuovo ticket?',
-      answer: 'Para crear un nuovo ticket, andá a la sección "Mis tickets" y hacé click en "Nuovo ticket". Completá los campos requeridos y envialo.',
-      category: 'agente',
-      tags: ['ticket', 'crear', 'novo'],
-    },
+
     {
       id: 'ag-002',
       question: '¿Cómo veo el estado de mis solicitudes?',
-      answer: 'En la sección "Mis tickets" vas a ver todos tus tickets con su estado: Pendiente, En proceso, Resuelto o Cerrado.',
+      answer:
+        'En la sección "Mis tickets" vas a ver todos tus tickets con su estado: Pendiente, En proceso, Resuelto o Cerrado.',
       category: 'agente',
       tags: ['ticket', 'estado', 'consultar'],
     },
     {
       id: 'ag-003',
       question: '¿Puedo reasignar un ticket a otro agente?',
-      answer: 'No, los tickets solo pueden ser reasignados por supervisores. Si necesitás reasignar un ticket, contactá a tu supervisor.',
+      answer:
+        'No, los tickets solo pueden ser reasignados por supervisores. Si necesitás reasignar un ticket, contactá a tu supervisor.',
       category: 'agente',
       tags: ['ticket', 'reasignar'],
     },
     {
       id: 'ag-004',
       question: '¿Cuál es el tiempo máximo de respuesta?',
-      answer: 'El tiempo de respuesta depende de la prioridad del ticket: Alta (2h), Media (24h), Baja (72h).',
+      answer:
+        'El tiempo de respuesta depende de la prioridad del ticket: Alta (2h), Media (24h), Baja (72h).',
       category: 'agente',
       tags: ['sla', 'tiempo', 'respuesta'],
     },
@@ -46,33 +43,37 @@ export class FaqService {
     {
       id: 'eq-001',
       question: '¿Cómo reasigno un ticket a otro agente?',
-      answer: 'En el detalle del ticket, usá el botón "Reasignar" y seleccioná el novo agente del listado.',
+      answer:
+        'En el detalle del ticket, usá el botón "Reasignar" y seleccioná el novo agente del listado.',
       category: 'equipo',
       tags: ['ticket', 'reasignar', 'agente'],
     },
     {
       id: 'eq-002',
       question: '¿Cómo改变了 la prioridad de un ticket?',
-      answer: 'En el detalle del ticket, podés cambiar la prioridad en el campo correspondiente. Solo supervisores pueden cambiar a "Crítica".',
+      answer:
+        'En el detalle del ticket, podés cambiar la prioridad en el campo correspondiente. Solo supervisores pueden cambiar a "Crítica".',
       category: 'equipo',
       tags: ['ticket', 'prioridad', 'cambiar'],
     },
     {
       id: 'eq-003',
       question: '¿Cómo veo los tickets de mi equipo?',
-      answer: 'En "Panel de equipo" vas a encontrar todos los tickets asignados a tu equipo con filtros por agente, estado y fecha.',
+      answer:
+        'En "Panel de equipo" vas a encontrar todos los tickets asignados a tu equipo con filtros por agente, estado y fecha.',
       category: 'equipo',
       tags: ['ticket', 'equipo', 'panel'],
     },
     {
       id: 'eq-004',
       question: '¿Cómo genero reportes?',
-      answer: 'En la sección "Reportes" podés generar reportes de tickets por período, agente, categoría y más.',
+      answer:
+        'En la sección "Reportes" podés generar reportes de tickets por período, agente, categoría y más.',
       category: 'equipo',
       tags: ['reporte', ' estadisticas'],
     },
 
-// === GENERAL (TODOS LOS ROLES) ===
+    // === GENERAL (TODOS LOS ROLES) ===
     {
       id: 'gn-001',
       question: '¿Cómo recupero mi contraseña?',
@@ -120,7 +121,8 @@ export class FaqService {
     },
     {
       id: 'gn-004',
-      question: '¿Cómo corregir una licencia médica o realizar una consulta/reclamo en el sistema SUNA?',
+      question:
+        '¿Cómo corregir una licencia médica o realizar una consulta/reclamo en el sistema SUNA?',
       answer: `Para correcciones, consultas o reclamos en el sistema SUNA (Ministerio de Educación), seguí estos pasos:
 1. Ingresá a https://ayuda.aif.gob.ar/
 2. Iniciá sesión con tu usuario y contraseña
@@ -159,28 +161,32 @@ Para corregir una licencia ya registrada:
     {
       id: 'gn-006',
       question: '¿Dónde veo las políticas de privacidad?',
-      answer: 'Las políticas de privacidad están disponibles en el pie de página, sección "Privacidad".',
+      answer:
+        'Las políticas de privacidad están disponibles en el pie de página, sección "Privacidad".',
       category: 'general',
       tags: ['privacidad', 'políticas', 'legal'],
     },
     {
       id: 'gn-002',
       question: '¿Cómo contacto al soporte técnico?',
-      answer: 'Podés contactar al soporte por: Email (soporte@suna.com), Teléfono (0800-555-SUNA), o creando un ticket.',
+      answer:
+        'Podés contactar al soporte por: Email (soporte@suna.com), Teléfono (0800-555-SUNA), o creando un ticket.',
       category: 'general',
       tags: ['soporte', 'contacto', 'ayuda'],
     },
     {
       id: 'gn-003',
       question: '¿Cuáles son los horarios de atención?',
-      answer: 'El sistema está disponible 24/7. El equipo de soporte atender: Lunes a viernes de 8h a 20h, sábados de 9h a 13h.',
+      answer:
+        'El sistema está disponible 24/7. El equipo de soporte atender: Lunes a viernes de 8h a 20h, sábados de 9h a 13h.',
       category: 'general',
       tags: ['horario', 'atencion', 'soporte'],
     },
     {
       id: 'gn-004',
       question: '¿Dónde veo las políticas de privacidad?',
-      answer: 'Las políticas de privacidad están disponibles en el pie de página, sección "Privacidad" o haciendo click aquí.',
+      answer:
+        'Las políticas de privacidad están disponibles en el pie de página, sección "Privacidad" o haciendo click aquí.',
       category: 'general',
       tags: ['privacidad', 'políticas', 'legal'],
     },
@@ -193,20 +199,21 @@ Para corregir una licencia ya registrada:
   readonly filteredFaqs = computed(() => {
     const category = this.selectedCategory();
     const all = this.faqs();
-    
+
     if (!category) return all;
-    return all.filter(faq => faq.category === category);
+    return all.filter((faq) => faq.category === category);
   });
 
   // Buscar en FAQs
   search(query: string) {
     const q = query.toLowerCase().trim();
     if (!q) return this.faqs();
-    
-    return this.faqs().filter(faq => 
-      faq.question.toLowerCase().includes(q) ||
-      faq.answer.toLowerCase().includes(q) ||
-      faq.tags.some(tag => tag.toLowerCase().includes(q))
+
+    return this.faqs().filter(
+      (faq) =>
+        faq.question.toLowerCase().includes(q) ||
+        faq.answer.toLowerCase().includes(q) ||
+        faq.tags.some((tag) => tag.toLowerCase().includes(q)),
     );
   }
 
@@ -215,3 +222,4 @@ Para corregir una licencia ya registrada:
     this.selectedCategory.set(category);
   }
 }
+

@@ -1,0 +1,7 @@
+.icon-default {
+  color: #a6b7bf;
+}
+
+a:hover .icon-default {
+  color: #1e3a8a;
+}

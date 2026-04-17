@@ -1,0 +1,112 @@
+<h1 class="page-title">Configuración de Noticias</h1>
+
+<div class="page-content">
+  <div class="header">
+    <button hlmBtn (click)="openForm()" class="btn-primary">
+      <ng-icon hlm size="sm" name="lucidePlus" />
+      <span>Nueva Noticia</span>
+    </button>
+  </div>
+
+  @if(showForm()){
+  <div class="form-overlay">
+    <div class="form-modal">
+      <div class="form-header">
+        <h2 class="text-xl font-semibold">
+          {{ editingId() ? 'Editar Noticia' : 'Nueva Noticia' }}
+        </h2>
+        <button hlmBtn variant="ghost" size="sm" (click)="closeForm()">
+          <ng-icon hlm size="sm" name="lucideX" />
+        </button>
+      </div>
+      
+      <div class="form-body">
+        <div class="form-group">
+          <label>Título</label>
+          <input 
+            type="text" 
+            [(ngModel)]="formData().title" 
+            placeholder="Título de la noticia"
+            class="form-input"
+          />
+        </div>
+        
+        <div class="form-group">
+          <label>Descripción</label>
+          <textarea 
+            [(ngModel)]="formData().description" 
+            placeholder="Descripción de la noticia"
+            class="form-input"
+            rows="4"
+          ></textarea>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Fecha</label>
+            <input 
+              type="date" 
+              [(ngModel)]="formData().date" 
+              class="form-input"
+            />
+          </div>
+          
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+              <input 
+                type="checkbox" 
+                [(ngModel)]="formData().important"
+              />
+              <span>Importante</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-footer">
+        <button hlmBtn variant="outline" (click)="closeForm()">Cancelar</button>
+        <button hlmBtn (click)="save()" class="btn-primary">
+          <ng-icon hlm size="sm" name="lucideCheck" />
+          <span>Guardar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+
+  <div class="news-list">
+    @for (news of newsList(); track news.id) {
+      <div class="news-card" [class.important]="news.important">
+        <div class="news-card-header">
+          <div class="news-meta">
+            <span class="news-date">{{ news.date | date:'dd/MM/yyyy' }}</span>
+            @if(news.important){
+            <span class="news-badge">
+              <ng-icon hlm size="xs" name="lucideCircleAlert" />
+              Importante
+            </span>
+            }
+          </div>
+          <div class="news-actions">
+            <button hlmBtn variant="ghost" size="sm" (click)="openForm(news)">
+              <ng-icon hlm size="sm" name="lucidePencil" />
+            </button>
+            <button hlmBtn variant="ghost" size="sm" (click)="delete(news.id)">
+              <ng-icon hlm size="sm" name="lucideTrash2" />
+            </button>
+          </div>
+        </div>
+        <h3 class="news-title">{{ news.title }}</h3>
+        <p class="news-description">{{ news.description }}</p>
+      </div>
+    } @empty {
+      <div class="empty-state">
+        <p>No hay noticias configuradas.</p>
+        <button hlmBtn (click)="openForm()" class="btn-primary">
+          <ng-icon hlm size="sm" name="lucidePlus" />
+          <span>Crear primera noticia</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

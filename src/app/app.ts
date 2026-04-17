@@ -9,9 +9,7 @@ import { Header, Footer } from '../core/layout';
     <div class="app-layout">
       <app-header />
       <main class="main-content">
-        <div class="container">
-          <router-outlet />
-        </div>
+        <router-outlet />
       </main>
       <app-footer />
     </div>

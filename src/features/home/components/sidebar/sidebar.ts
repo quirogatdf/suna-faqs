@@ -15,7 +15,7 @@ import { FaqService } from '../../../../shared/services/faq.service';
 export class Sidebar {
   private faqService = inject(FaqService);
   
-  isCollapsed = signal<boolean>(false);
+  isCollapsed = signal<boolean>(window.matchMedia('(max-width: 639px)').matches);
 
   categories = [
     { id: 'agente', icon: 'lucideUser', label: 'Rol de Agente' },
