@@ -1,0 +1,45 @@
+@if(isCollapsed()){
+<div class="w-12 bg-sidebar flex flex-col">
+  <div class="p-3">
+    <button hlmBtn variant="ghost" size="sm" class="cursor-pointer" (click)="toggle()">
+      <ng-icon hlm size="sm" name="lucideMenu" />
+    </button>
+  </div>
+</div>
+}@else{
+<div class="w-80 bg-sidebar flex flex-col">
+  <div class="p-4">
+    <div class="flex items-center justify-between mb-4">
+      <h1 class="text-xl font-bold">Manual de Usuario</h1>
+      <button hlmBtn variant="ghost" size="sm" class="cursor-pointer" (click)="toggle()">
+        <ng-icon hlm size="sm" name="lucideX" />
+      </button>
+    </div>
+    <div class="relative mb-4">
+      <ng-icon class="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" hlm size="sm" name="lucideSearch" />
+      <input class="pl-10 pr-20 w-full" type="text" placeholder="Buscar en el manual.." />
+    </div>
+  </div>
+  
+  <!-- Categorías -->
+  <div class="px-4 py-2">
+    <span class="text-xs font-semibold text-muted-foreground uppercase">Categorías</span>
+  </div>
+  
+  <div class="flex-1 px-2">
+    @for (cat of categories; track cat.id) {
+      <button 
+        hlmBtn 
+        variant="ghost" 
+        class="w-full justify-start gap-3 px-3 py-2"
+        [class.bg-primary]="isSelected(cat.id)"
+        [class.text-primary-foreground]="isSelected(cat.id)"
+        (click)="selectCategory(cat.id)"
+      >
+        <ng-icon hlm size="sm" [name]="cat.icon" />
+        <span>{{ cat.label }}</span>
+      </button>
+    }
+  </div>
+</div>
+}

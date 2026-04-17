@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+/* @import "@angular/cdk/overlay-prebuilt.css"; */
+@import "@spartan-ng/brain/hlm-tailwind-preset.css";
+
+@import "tailwindcss";
+:root {
+  --font-sans: "Lato", sans-serif;
+  --background: hsl(0deg 0% 100%);
+  --foreground: hsl(224.06deg 72.27% 4.17%);
+  --card: hsl(0deg 0% 100%);
+  --card-foreground: hsl(224.06deg 72.27% 4.17%);
+  --popover: hsl(0deg 0% 100%);
+  --popover-foreground: hsl(224.06deg 72.27% 4.17%);
+  --primary: hsl(220.99deg 41.69% 11.07%);
+  --primary-foreground: hsl(344.54deg 18.99% 98.19%);
+  --secondary: hsl(344.7deg 12.65% 95.9%);
+  --secondary-foreground: hsl(220.99deg 41.69% 11.07%);
+  --muted: hsl(344.7deg 12.65% 95.9%);
+  --muted-foreground: hsl(219.99deg 10.27% 46.3%);
+  --accent: hsl(240deg 4.8% 95.9%);
+  --accent-foreground: hsl(220.99deg 41.69% 11.07%);
+  --destructive: hsl(351.72deg 100% 40.53%);
+  --border: hsl(344.79deg 11.54% 91.05%);
+  --input: hsl(344.79deg 11.54% 91.05%);
+  --ring: hsl(217.85deg 11.94% 64.27%);
+  --radius: 0.625rem;
+  color-scheme: light;
+}
+
+:root.dark {
+  --background: 224.06deg 72.27% 4.17%;
+  --foreground: 344.54deg 18.99% 98.19%;
+  --card: 220.99deg 41.69% 11.07%;
+  --card-foreground: 344.54deg 18.99% 98.19%;
+  --popover: 220.99deg 41.69% 11.07%;
+  --popover-foreground: 344.54deg 18.99% 98.19%;
+  --primary: 344.79deg 11.54% 91.05%;
+  --primary-foreground: 220.99deg 41.69% 11.07%;
+  --secondary: 214.98deg 31% 16.95%;
+  --secondary-foreground: 344.54deg 18.99% 98.19%;
+  --muted: 214.98deg 31% 16.95%;
+  --muted-foreground: 217.85deg 11.94% 64.27%;
+  --accent: 214.98deg 31% 16.95%;
+  --accent-foreground: 344.54deg 18.99% 98.19%;
+  --destructive: 358.76deg 100% 69.84%;
+  --border: 0deg 0% 13.73%;
+  --input: 0deg 0% 18.43%;
+  --ring: 219.99deg 10.27% 46.3%;
+  color-scheme: dark;
+}
+body {
+  color: #54667a;
+}
+
+layer base {
+  * {
+    @apply border-border;
+  }
+}
