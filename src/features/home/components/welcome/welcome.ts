@@ -19,7 +19,7 @@ import { NewsService } from '../../../../shared/services/news.service';
 
 @Component({
   selector: 'app-welcome',
-  imports: [DatePipe, HlmButtonDirective, HlmIconDirective, NgIcon],
+  imports: [HlmButtonDirective, HlmIconDirective, NgIcon],
   providers: [
     provideIcons({
       lucideSparkles,

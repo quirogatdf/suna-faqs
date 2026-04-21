@@ -1,11 +1,11 @@
 .admin-sidebar {
-  position: fixed;
+  position: sticky;
   left: 0;
-  top: 64px;
-  height: calc(100vh - 64px);
+  top: 48px;
+  height: calc(100vh - 48px);
   width: 56px;
   background-color: white;
-  z-index: 100;
+  z-index: 40;
   transition: width 0.2s ease-in-out;
   overflow: hidden;
   border-right: 1px solid var(--border);

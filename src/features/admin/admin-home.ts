@@ -6,9 +6,9 @@ import { AdminSidebar } from './components/admin-sidebar/admin-sidebar';
   selector: 'app-admin-home',
   imports: [AdminSidebar, RouterOutlet],
   template: `
-    <div class="flex">
-      <app-admin-sidebar />
-      <main class="main-content">
+    <div class="flex h-[calc(100vh-64px)] overflow-auto">
+      <app-admin-sidebar class="sticky top-0 h-full z-[40] flex-shrink-0" />
+      <main class="flex-1 p-6 bg-muted">
         <router-outlet />
       </main>
     </div>
