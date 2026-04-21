@@ -53,6 +53,11 @@ export class Sidebar {
     const current = this.faqService.selectedCategory();
     if (current === categoryId) {
       this.faqService.setCategory(null);
+      // On mobile, close sidebar when deselecting category
+      if (window.innerWidth <= 639 && this.isOpen()) {
+        this.isOpen.set(false);
+        this.isCollapsed.set(true);
+      }
     } else {
       this.faqService.setCategory(categoryId);
       // On mobile, open sidebar when selecting a category
