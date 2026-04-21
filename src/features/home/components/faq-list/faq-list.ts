@@ -1,14 +1,22 @@
 import { Component, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideChevronDown, lucideChevronUp, lucideSearch } from '@ng-icons/lucide';
+import { lucideChevronDown, lucideSearch } from '@ng-icons/lucide';
 import { HlmButtonDirective } from '@spartan-ng/helm/button';
 import { HlmIconDirective } from '@spartan-ng/helm/icon';
+import { HlmInput } from '@spartan-ng/helm/input';
+import { HlmAccordionModule } from '@spartan-ng/helm/accordion';
 import { FaqService } from '../../../../shared/services/faq.service';
 
 @Component({
   selector: 'app-faq-list',
-  imports: [HlmButtonDirective, HlmIconDirective, NgIcon],
-  providers: [provideIcons({ lucideChevronDown, lucideChevronUp, lucideSearch })],
+  imports: [
+    HlmButtonDirective,
+    HlmIconDirective,
+    HlmInput,
+    HlmAccordionModule,
+    NgIcon
+  ],
+  providers: [provideIcons({ lucideChevronDown, lucideSearch })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="faq-container">
@@ -16,6 +24,7 @@ import { FaqService } from '../../../../shared/services/faq.service';
       <div class="faq-search">
         <ng-icon hlm size="sm" name="lucideSearch" class="search-icon" />
         <input 
+          hlmInput
           type="text" 
           class="search-input" 
           placeholder="Buscar en las preguntas..."
@@ -64,30 +73,25 @@ import { FaqService } from '../../../../shared/services/faq.service';
         </button>
       </div>
 
-      <!-- Lista de FAQs -->
+      <!-- Lista de FAQs con Accordion -->
       <div class="faq-list">
         @for (faq of displayedFaqs(); track faq.id) {
           <div class="faq-item">
-            <button 
-              class="faq-question"
-              [class.expanded]="expandedId() === faq.id"
-              (click)="toggleExpand(faq.id)"
-            >
-              <span>{{ faq.question }}</span>
-              <ng-icon 
-                hlm 
-                size="sm" 
-                [name]="expandedId() === faq.id ? 'lucideChevronUp' : 'lucideChevronDown'" 
-              />
-            </button>
-            
-            @if (expandedId() === faq.id) {
-              <div class="faq-answer">
-                @for (line of getLines(faq.answer); track line) {
-                  <p>{{ line }}</p>
-                }
-              </div>
-            }
+            <hlm-accordion>
+              <hlm-accordion-item>
+                <button hlm-accordion-trigger>
+                  <span>{{ faq.question }}</span>
+                  <ng-icon hlm size="sm" name="lucideChevronDown" class="accordion-icon" />
+                </button>
+                <hlm-accordion-content>
+                  <div class="faq-answer">
+                    @for (line of getLines(faq.answer); track line) {
+                      <p>{{ line }}</p>
+                    }
+                  </div>
+                </hlm-accordion-content>
+              </hlm-accordion-item>
+            </hlm-accordion>
           </div>
         } @empty {
           <div class="no-results">
@@ -123,10 +127,11 @@ import { FaqService } from '../../../../shared/services/faq.service';
 
     .search-input {
       flex: 1;
-      border: none;
-      outline: none;
+      border: none !important;
+      outline: none !important;
       font-size: 0.9375rem;
       background: transparent;
+      padding: 0 !important;
     }
 
     .search-input::placeholder {
@@ -163,26 +168,6 @@ import { FaqService } from '../../../../shared/services/faq.service';
       border-color: var(--border-hover);
     }
 
-    .faq-question {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px;
-      background: transparent;
-      border: none;
-      font-size: 0.9375rem;
-      font-weight: 500;
-      text-align: left;
-      cursor: pointer;
-      gap: 12px;
-      color: var(--foreground);
-    }
-
-    .faq-question.expanded {
-      border-bottom: 1px solid var(--border);
-    }
-
     .faq-answer {
       padding: 16px;
       background: var(--surface-raised);
@@ -204,13 +189,71 @@ import { FaqService } from '../../../../shared/services/faq.service';
       padding: 3rem 1rem;
       color: var(--muted-foreground);
     }
+
+    :host ::ng-deep .accordion-icon {
+      transition: transform 0.2s ease;
+    }
+
+    :host ::ng-deep [data-expanded="true"] .accordion-icon {
+      transform: rotate(180deg);
+    }
+
+    :host ::ng-deep [hlm-accordion-trigger] {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      background: transparent;
+      border: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      gap: 12px;
+      color: var(--foreground);
+    }
+
+    :host ::ng-deep [hlm-accordion-trigger]:focus {
+      outline: none;
+    }
+
+    :host ::ng-deep [hlm-accordion-content] {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    :host ::ng-deep [data-state="open"] [hlm-accordion-content] {
+      animation: slideDown 0.2s ease-out;
+    }
+
+    :host ::ng-deep [data-state="closed"] [hlm-accordion-content] {
+      animation: slideUp 0.2s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        height: 0;
+      }
+      to {
+        height: var(--radix-accordion-content-height);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        height: var(--radix-accordion-content-height);
+      }
+      to {
+        height: 0;
+      }
+    }
   `],
 })
 export class FaqListComponent {
   private readonly faqService = inject(FaqService);
 
   searchQuery = signal('');
-  expandedId = signal<string | null>(null);
 
   selectedCategory = this.faqService.selectedCategory;
 
@@ -239,10 +282,6 @@ export class FaqListComponent {
     if (value) {
       this.faqService.setCategory(null);
     }
-  }
-
-  toggleExpand(id: string) {
-    this.expandedId.set(this.expandedId() === id ? null : id);
   }
 
   getLines(text: string): string[] {

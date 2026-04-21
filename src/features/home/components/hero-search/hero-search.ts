@@ -3,10 +3,11 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideSearch } from '@ng-icons/lucide';
 import { HlmButtonDirective } from '@spartan-ng/helm/button';
 import { HlmIconDirective } from '@spartan-ng/helm/icon';
+import { HlmInput } from '@spartan-ng/helm/input';
 
 @Component({
   selector: 'app-hero-search',
-  imports: [HlmButtonDirective, HlmIconDirective, NgIcon],
+  imports: [HlmButtonDirective, HlmIconDirective, HlmInput, NgIcon],
   providers: [provideIcons({ lucideSearch })],
   template: `
     <div class="hero-container">
@@ -15,6 +16,7 @@ import { HlmIconDirective } from '@spartan-ng/helm/icon';
         <div class="search-box">
           <ng-icon hlm size="lg" name="lucideSearch" class="search-icon" />
           <input 
+            hlmInput
             type="text" 
             class="search-input" 
             placeholder="¿Qué necesitas saber?"
@@ -95,11 +97,12 @@ import { HlmIconDirective } from '@spartan-ng/helm/icon';
 
     .search-input {
       flex: 1;
-      border: none;
-      outline: none;
+      border: none !important;
+      outline: none !important;
       font-size: 1rem;
       background: transparent;
       min-width: 0;
+      padding: 0 !important;
     }
 
     @media (min-width: 640px) {

@@ -13,7 +13,7 @@
         "@angular/router": "^20.0.0",
         "@ng-icons/core": "^29.10.0",
         "@ng-icons/lucide": ">=29.0.0",
-        "@spartan-ng/brain": "0.0.1-alpha.485",
+        "@spartan-ng/brain": "0.0.1-alpha.506",
         "@tailwindcss/postcss": "^4.1.11",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.1",
@@ -702,7 +702,7 @@
 
     "@socket.io/component-emitter": ["@socket.io/component-emitter@3.1.2", "", {}, "sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA=="],
 
-    "@spartan-ng/brain": ["@spartan-ng/brain@0.0.1-alpha.485", "", { "dependencies": { "tslib": "^2.3.0" }, "peerDependencies": { "@angular/cdk": ">=19.0.0", "@angular/common": ">=19.0.0", "@angular/core": ">=19.0.0", "@angular/forms": ">=19.0.0", "clsx": ">=2.0.0", "luxon": ">=3.0.0", "rxjs": ">=6.6.0", "tailwind-merge": ">=2.5.0", "tailwindcss": ">=3.3.0", "tailwindcss-animate": ">=1.0.7" }, "optionalPeers": ["luxon"] }, "sha512-8ZRlD/+V5djwObVvj0nUabdjjSAq56/TGf7TiljoVNcwkQgtNbjmJMJU7+piI/vDnxA60Onh82Zn+DP2MBCIaA=="],
+    "@spartan-ng/brain": ["@spartan-ng/brain@0.0.1-alpha.506", "", { "dependencies": { "tslib": "^2.3.0" }, "peerDependencies": { "@angular/cdk": ">=19.0.0", "@angular/common": ">=19.0.0", "@angular/core": ">=19.0.0", "@angular/forms": ">=19.0.0", "clsx": ">=2.0.0", "luxon": ">=3.0.0", "rxjs": ">=6.6.0", "tailwind-merge": ">=2.5.0", "tailwindcss": ">=3.3.0", "tailwindcss-animate": ">=1.0.7" }, "optionalPeers": ["luxon"] }, "sha512-jWM49kgknbUVoh0NtS0oE13NGwOF9TolmGn7/AH3PMkYrVpzAKM1d2n2JY4v+0saP/9oTEJUXhLcYn8B8YmLzg=="],
 
     "@spartan-ng/cli": ["@spartan-ng/cli@0.0.1-alpha.506", "", { "dependencies": { "@nx/angular": ">=20.0.0", "@nx/devkit": ">=20.0.0", "@nx/js": ">=20.0.0", "@nx/workspace": ">=20.0.0", "@phenomnomnominal/tsquery": "^6.1.3", "@schematics/angular": ">=19.0.0", "enquirer": "2.3.6", "jsonc-eslint-parser": "^2.1.0", "nx": ">=20.0.0", "picocolors": "^1.1.1", "semver": "7.5.4", "ts-morph": "25.0.1", "typescript": ">=5.0.0" }, "peerDependencies": { "tslib": "^2.3.0" } }, "sha512-MpooYNZzLUKE40YuaGKawMTz2ssbkrraj1S9Er8lNUH/WKq0mkto4wm3qsnXTjW79kDB6lrrNOuLFK3qiZgaxw=="],
 

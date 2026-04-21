@@ -3,11 +3,12 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideMenu, lucideX, lucideSearch, lucideUser, lucideUsers, lucideCircleHelp } from '@ng-icons/lucide';
 import { HlmButtonDirective } from '@spartan-ng/helm/button';
 import { HlmIconDirective } from '@spartan-ng/helm/icon';
+import { HlmInput } from '@spartan-ng/helm/input';
 import { FaqService } from '../../../../shared/services/faq.service';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [HlmButtonDirective, HlmIconDirective, NgIcon],
+  imports: [HlmButtonDirective, HlmIconDirective, HlmInput, NgIcon],
   providers: [provideIcons({ lucideMenu, lucideX, lucideSearch, lucideUser, lucideUsers, lucideCircleHelp })],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
