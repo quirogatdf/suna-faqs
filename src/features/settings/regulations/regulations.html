@@ -1,0 +1,91 @@
+<h1 class="page-title">Normativas</h1>
+
+<div class="page-content">
+  <div class="header">
+    <button hlmBtn (click)="openForm()" class="btn-primary">
+      <ng-icon hlm size="sm" name="lucidePlus" />
+      <span>Nueva Normativa</span>
+    </button>
+  </div>
+
+  @if(showForm()){
+  <div class="form-overlay">
+    <div class="form-modal">
+      <div class="form-header">
+        <h2 class="text-xl font-semibold">
+          {{ editingId() ? 'Editar Normativa' : 'Nueva Normativa' }}
+        </h2>
+        <button hlmBtn variant="ghost" size="sm" (click)="closeForm()">
+          <ng-icon hlm size="sm" name="lucideX" />
+        </button>
+      </div>
+
+      <div class="form-body">
+        <div class="form-group">
+          <label>Nombre del Instrumento Legal</label>
+          <input
+            type="text"
+            [(ngModel)]="formData().name"
+            placeholder="Ej: Decreto 241/2026 - Régimen de Cambios de Función"
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Fecha de Publicación</label>
+          <input
+            type="date"
+            [(ngModel)]="formData().publicationDate"
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>URL del PDF</label>
+          <input
+            type="text"
+            [(ngModel)]="formData().pdfUrl"
+            placeholder="/assets/normativas/documento.pdf"
+            class="form-input"
+          />
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <button hlmBtn variant="outline" (click)="closeForm()">Cancelar</button>
+        <button hlmBtn (click)="save()" class="btn-primary">
+          <ng-icon hlm size="sm" name="lucideCheck" />
+          <span>Guardar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+
+  <div class="regulations-grid">
+    @for (regulation of regulationsList(); track regulation.id) {
+      <div class="regulation-card" (click)="openPdf(regulation)">
+        <div class="regulation-card-icon">
+          <ng-icon hlm size="xl" name="lucideFileText" />
+        </div>
+        <div class="regulation-card-content">
+          <h3 class="regulation-title">{{ regulation.name }}</h3>
+          <span class="regulation-date">
+            Publicación: {{ regulation.publicationDate | date:'dd/MM/yyyy' }}
+          </span>
+        </div>
+        <div class="regulation-card-action">
+          <ng-icon hlm size="md" name="lucideExternalLink" />
+        </div>
+      </div>
+    } @empty {
+      <div class="empty-state">
+        <p>No hay normativas configuradas.</p>
+        <button hlmBtn (click)="openForm()" class="btn-primary">
+          <ng-icon hlm size="sm" name="lucidePlus" />
+          <span>Crear primera normativa</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

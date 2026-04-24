@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { Home } from '../features/home/home';
+import { NormativasPublic } from '../features/normativas/normativas-public';
 import { AdminHome } from '../features/admin/admin-home';
 import { NewsConfig } from '../features/settings/news-config/news-config';
 import { Regulations } from '../features/settings/regulations/regulations';
@@ -9,6 +10,11 @@ export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () => import('../features/home/home').then((m) => m.Home),
+  },
+  {
+    path: 'normativas',
+    loadComponent: () =>
+      import('../features/normativas/normativas-public').then((m) => m.NormativasPublic),
   },
   {
     path: 'login',
